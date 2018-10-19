@@ -261,6 +261,8 @@ if ($shlib && $FLAVOR !~ /CE/)
 	{
 	$mlflags.=" $lflags /dll";
 	$lib_cflag.=" -D_WINDLL";
+	if ($base_cflags !~ /-D_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE/)
+	{
 	#
 	# Engage Applink...
 	#
@@ -285,6 +287,7 @@ ___
 	$banner.=<<'___' if ($FLAVOR =~ /WIN64/);
 CRYPTOOBJ=ms\uptable.obj $(CRYPTOOBJ)
 ___
+	}
 	}
 elsif ($shlib && $FLAVOR =~ /CE/)
 	{
